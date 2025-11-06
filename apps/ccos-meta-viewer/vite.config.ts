@@ -14,12 +14,12 @@ export default defineConfig(() => ({
     host: 'localhost',
   },
   plugins: [react()],
-  base: '/ccos-meta-viewer/',
   // Uncomment this if you are using workers.
   // worker: {
   //  plugins: [],
   // },
   build: {
+    base: '/ccos-meta-viewer/',
     outDir: './dist',
     emptyOutDir: true,
     reportCompressedSize: true,
