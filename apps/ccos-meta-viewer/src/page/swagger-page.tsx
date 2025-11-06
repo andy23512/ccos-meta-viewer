@@ -1,6 +1,8 @@
 import { OpenAPIV3_1 } from 'openapi-types';
 import SwaggerUI from 'swagger-ui-react';
+
 import 'swagger-ui-react/swagger-ui.css';
+import '../swagger-dark/SwaggerDark.css';
 
 export function SwaggerPage() {
   const spec: OpenAPIV3_1.Document = {
