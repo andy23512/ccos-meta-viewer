@@ -1,0 +1,8 @@
+
+error: gpg failed to sign the data:
+gpg: skipped "Tangent <nanoha@RaisingHeartExelion.local>": No secret key
+[GNUPG:] INV_SGNR 9 Tangent <nanoha@RaisingHeartExelion.local>
+[GNUPG:] FAILURE sign 17
+gpg: signing failed: No secret key
+
+fatal: failed to write commit object
