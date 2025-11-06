@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://andy23512.github.io/ccos-meta-viewer",
   "scripts": {
-    "predeploy": "nx build ccos-meta-viewer --prod --baseHref=/ccos-meta-viewer/",
+    "predeploy": "nx build ccos-meta-viewer --prod",
     "deploy": "gh-pages -d apps/ccos-meta-viewer/dist"
   },
   "private": true,
