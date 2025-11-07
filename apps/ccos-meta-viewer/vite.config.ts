@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => ({
   root: __dirname,
+  base: '/ccos-meta-viewer/',
   cacheDir: '../../node_modules/.vite/apps/ccos-meta-viewer',
   server: {
     port: 4200,
