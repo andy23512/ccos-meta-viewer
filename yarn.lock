@@ -3569,6 +3569,11 @@
     "@typescript-eslint/types" "8.46.3"
     eslint-visitor-keys "^4.2.1"
 
+"@uiw/react-json-view@^2.0.0-alpha.39":
+  version "2.0.0-alpha.39"
+  resolved "https://registry.yarnpkg.com/@uiw/react-json-view/-/react-json-view-2.0.0-alpha.39.tgz#bc050135c2763175a21c38359aa9458c6a8046df"
+  integrity sha512-D9MHNan56WhtdAsmjtE9x18YLY0JSMnh0a6Ji0/2sVXCF456ZVumYLdx2II7hLQOgRMa4QMaHloytpTUHxsFRw==
+
 "@vitejs/plugin-react@^4.2.0":
   version "4.7.0"
   resolved "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-4.7.0.tgz"

@@ -4,14 +4,14 @@ export interface Device {
   mtime: string;
 }
 
-export interface DeviceVersion {
+export interface Version {
   name: string;
   type: string;
   mtime: string;
 }
 
 // Reference: https://github.com/CharaChorder/DeviceManager/blob/d84495894aadd821c3356966f834593fda96dcab/src/lib/meta/types/meta.ts
-export interface DeviceVersionMeta {
+export interface Meta {
   version: string;
   target: string;
   git_commit: string;

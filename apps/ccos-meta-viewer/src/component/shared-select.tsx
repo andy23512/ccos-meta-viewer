@@ -16,6 +16,7 @@ interface SharedSelectProps<T> {
   onChange: (value: T) => void;
   disabled: boolean;
   loading: boolean;
+  error: boolean;
   children: ReactNode;
 }
 
@@ -24,13 +25,13 @@ function SharedSelect<T>(props: SharedSelectProps<T>) {
     props.onChange(event.target.value as T);
   };
   return (
-    <FormControl sx={{ width: 200 }}>
+    <FormControl sx={{ width: 200 }} error={props.error}>
       <InputLabel id={props.id + '-label'}>{props.label}</InputLabel>
       <Select
         input={<OutlinedInput label={props.label} />}
         labelId={props.id + '-label'}
         id={props.id}
-        value={props.value}
+        value={props.value ?? ''}
         onChange={handleChange}
         disabled={props.disabled}
       >

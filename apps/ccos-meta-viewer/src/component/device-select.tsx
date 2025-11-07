@@ -21,6 +21,7 @@ function DeviceSelect(props: DeviceSelectProps) {
       onChange={handleChange}
       disabled={devicesQuery.isLoading || devicesQuery.isError}
       loading={devicesQuery.isLoading}
+      error={devicesQuery.isError}
     >
       {devicesQuery.data?.map((device) => (
         <MenuItem key={device.name} value={device.name}>

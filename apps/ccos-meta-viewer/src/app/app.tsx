@@ -16,7 +16,7 @@ export function App() {
   ];
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" style={{ flex: '0 0 auto' }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -33,7 +33,7 @@ export function App() {
             </Typography>
             <Box sx={{ flexGrow: 1, display: 'flex' }}>
               {pages.map((p) => (
-                <NavLink to={p.to}>
+                <NavLink key={p.to} to={p.to}>
                   {({ isActive }) => (
                     <Button
                       sx={{

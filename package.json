@@ -4,6 +4,7 @@
   "license": "MIT",
   "homepage": "https://andy23512.github.io/ccos-meta-viewer",
   "scripts": {
+    "start": "nx serve ccos-meta-viewer --port 4301",
     "predeploy": "nx build ccos-meta-viewer --prod",
     "deploy": "gh-pages -d apps/ccos-meta-viewer/dist"
   },
@@ -15,6 +16,7 @@
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "@tanstack/react-query": "^5.90.7",
+    "@uiw/react-json-view": "^2.0.0-alpha.39",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "6.29.0",
