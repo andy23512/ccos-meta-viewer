@@ -5,7 +5,9 @@ import Container from '@mui/material/Container';
 import { alpha } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
+import InformationDialog from '../component/information-dialog';
 import IndexPage from '../page/index-page';
 import SwaggerPage from '../page/swagger-page';
 
@@ -14,6 +16,13 @@ export function App() {
     { to: '/', name: 'Home' },
     { to: '/swagger', name: 'Swagger' },
   ];
+  const [informationDialogOpen, setInformationDialogOpen] = useState(false);
+  const handleInformationDialogOpen = () => {
+    setInformationDialogOpen(true);
+  };
+  const handleInformationDialogClose = () => {
+    setInformationDialogOpen(false);
+  };
   return (
     <>
       <AppBar position="static" style={{ flex: '0 0 auto' }}>
@@ -49,6 +58,20 @@ export function App() {
                 </NavLink>
               ))}
             </Box>
+            <Button
+              sx={{
+                my: 2,
+                color: 'white',
+                display: 'block',
+              }}
+              onClick={handleInformationDialogOpen}
+            >
+              What's this?
+            </Button>
+            <InformationDialog
+              open={informationDialogOpen}
+              onClose={handleInformationDialogClose}
+            ></InformationDialog>
           </Toolbar>
         </Container>
       </AppBar>

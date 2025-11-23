@@ -1,0 +1,50 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material';
+
+interface InformationDialogProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+function InformationDialog({ open, onClose }: InformationDialogProps) {
+  const handleClose = () => {
+    onClose();
+  };
+
+  return (
+    <Dialog onClose={handleClose} open={open}>
+      <DialogTitle>CCOS Meta Viewer</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          This website serves as a viewer for the official&nbsp;
+          <a
+            className="underline"
+            href="https://github.com/CharaChorder/CCOS-firmware?tab=readme-ov-file#firmware-meta-api"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CharaChorder Firmware Meta API
+          </a>
+          . It enables developers to more easily access specific types of data
+          for a particular device and firmware version through a graphical user
+          interface (GUI). It also includes a&nbsp;
+          <a
+            className="underline"
+            href="https://swagger.io/tools/swagger-ui/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Swagger UI
+          </a>
+          .
+        </DialogContentText>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+export default InformationDialog;
