@@ -20,7 +20,8 @@ function InformationDialog({ open, onClose }: InformationDialogProps) {
       <DialogTitle>CCOS Meta Viewer</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          This website serves as a unofficial data viewer for the official&nbsp;
+          This website serves as an unofficial data viewer for the
+          official&nbsp;
           <a
             className="underline"
             href="https://github.com/CharaChorder/CCOS-firmware?tab=readme-ov-file#firmware-meta-api"
@@ -43,11 +44,11 @@ function InformationDialog({ open, onClose }: InformationDialogProps) {
           . The source code can be accessed here:&nbsp;
           <a
             className="underline"
-            href="https://github.com/andy23512/device-comparator"
+            href="https://github.com/andy23512/ccos-meta-viewer"
             target="_blank"
             rel="noopener noreferrer"
           >
-            https://github.com/andy23512/device-comparator
+            https://github.com/andy23512/ccos-meta-viewer
           </a>
           .<h3 className="pt-3 pb-1 text-lg font-bold">Disclaimer</h3>
           This site is not affiliated, associated, authorized, endorsed by, or
