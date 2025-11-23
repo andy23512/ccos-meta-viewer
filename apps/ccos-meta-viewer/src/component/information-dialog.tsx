@@ -40,6 +40,15 @@ function InformationDialog({ open, onClose }: InformationDialogProps) {
           >
             Swagger UI
           </a>
+          . The source code can be accessed here:&nbsp;
+          <a
+            className="underline"
+            href="https://github.com/andy23512/device-comparator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://github.com/andy23512/device-comparator
+          </a>
           .<h3 className="pt-3 pb-1 text-lg font-bold">Disclaimer</h3>
           This site is not affiliated, associated, authorized, endorsed by, or
           in any way officially connected with CharaChorder. The official
