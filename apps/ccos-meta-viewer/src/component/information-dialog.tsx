@@ -40,6 +40,18 @@ function InformationDialog({ open, onClose }: InformationDialogProps) {
           >
             Swagger UI
           </a>
+          .<h3 className="pt-3 pb-1 text-lg font-bold">Disclaimer</h3>
+          This site is not affiliated, associated, authorized, endorsed by, or
+          in any way officially connected with CharaChorder. The official
+          websites can be found at&nbsp;
+          <a
+            className="underline"
+            href="https://www.charachorder.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            https://www.charachorder.com/
+          </a>
           .
         </DialogContentText>
       </DialogContent>
