@@ -20,7 +20,7 @@ function InformationDialog({ open, onClose }: InformationDialogProps) {
       <DialogTitle>CCOS Meta Viewer</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          This website serves as a viewer for the official&nbsp;
+          This website serves as a unofficial data viewer for the official&nbsp;
           <a
             className="underline"
             href="https://github.com/CharaChorder/CCOS-firmware?tab=readme-ov-file#firmware-meta-api"
