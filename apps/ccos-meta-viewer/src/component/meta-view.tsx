@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import JsonView from '@uiw/react-json-view';
 import { vscodeTheme } from '@uiw/react-json-view/vscode';
 import { getMetaFile } from '../api';
+import { KeymapCategory } from '../model/keymap.model';
+import ActionsView from './actions-view';
 
 interface MetaViewProps {
   device: string | null;
@@ -11,7 +13,7 @@ interface MetaViewProps {
 }
 
 function MetaView(props: MetaViewProps) {
-  const metaFileQuery = useQuery({
+  const metaFileQuery = useQuery<any>({
     queryKey: [
       'devices',
       props.device,
@@ -29,10 +31,17 @@ function MetaView(props: MetaViewProps) {
     enabled: !!props.device && !!props.version,
   });
   return (
-    <Box sx={{ flex: '1 1 0', minHeight: 0, overflow: 'auto' }}>
-      {metaFileQuery?.data && (
-        <JsonView value={metaFileQuery.data} style={vscodeTheme}></JsonView>
-      )}
+    <Box sx={{ flex: '1 1 0', minHeight: 0, height: '100%' }}>
+      {metaFileQuery?.data &&
+        (props.meta === 'actions.json' ? (
+          <ActionsView value={metaFileQuery.data as KeymapCategory[]} />
+        ) : (
+          <JsonView
+            className="h-full overflow-auto"
+            value={metaFileQuery.data}
+            style={vscodeTheme}
+          ></JsonView>
+        ))}
     </Box>
   );
 }
