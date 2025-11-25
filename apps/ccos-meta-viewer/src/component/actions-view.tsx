@@ -151,6 +151,8 @@ function ActionsView(props: ActionsViewProps) {
           ensureDomOrder={true}
           defaultColDef={defaultColDef}
           tooltipShowMode="whenTruncated"
+          suppressRowVirtualisation={true}
+          suppressColumnVirtualisation={true}
         ></AgGridReact>
       ) : (
         <JsonView
