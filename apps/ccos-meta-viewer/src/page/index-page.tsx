@@ -43,7 +43,7 @@ export function IndexPage() {
       }
       return params;
     });
-  }, [device, version, meta]);
+  }, [device, version, meta, setSearchParams]);
   return (
     <Box
       sx={{
