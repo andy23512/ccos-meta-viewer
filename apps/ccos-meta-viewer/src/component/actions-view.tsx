@@ -24,7 +24,8 @@ type ActionsViewType = 'table' | 'json';
 
 function ActionsView(props: ActionsViewProps) {
   const [viewType, setViewType] = useState<ActionsViewType>(
-    () => (localStorage.getItem('actionsViewType') as ActionsViewType) || 'json'
+    () =>
+      (localStorage.getItem('actionsViewType') as ActionsViewType) || 'table'
   );
 
   useEffect(() => {
