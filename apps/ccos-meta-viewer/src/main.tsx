@@ -10,7 +10,9 @@ import {
   ClientSideRowModelModule,
   ColumnAutoSizeModule,
   ModuleRegistry,
+  NumberFilterModule,
   RowAutoHeightModule,
+  TextFilterModule,
   TooltipModule,
 } from 'ag-grid-community';
 import { StrictMode } from 'react';
@@ -24,6 +26,8 @@ ModuleRegistry.registerModules([
   RowAutoHeightModule,
   ColumnAutoSizeModule,
   TooltipModule,
+  TextFilterModule,
+  NumberFilterModule,
 ]);
 
 const root = ReactDOM.createRoot(

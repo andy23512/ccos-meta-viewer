@@ -60,34 +60,41 @@ function ActionsView(props: ActionsViewProps) {
         field: 'actionCode',
         cellStyle: { backgroundColor: 'rgba(59, 130, 246, 0.2)' },
         pinned: 'left',
+        filter: 'agNumberColumnFilter',
       },
       {
         field: 'id',
         cellStyle: { backgroundColor: 'rgba(59, 130, 246, 0.2)' },
         pinned: 'left',
         headerName: 'ID',
+        filter: true,
       },
       {
         field: 'title',
         cellStyle: { backgroundColor: 'rgba(59, 130, 246, 0.2)' },
         pinned: 'left',
         wrapText: true,
+        filter: true,
       },
       {
         field: 'icon',
         wrapText: true,
+        filter: true,
       },
       {
         field: 'display',
+        filter: true,
       },
       {
         field: 'variant',
       },
       {
         field: 'variantOf',
+        filter: 'agNumberColumnFilter',
       },
       {
         field: 'keyCode',
+        filter: true,
       },
       {
         field: 'printable',
@@ -110,6 +117,7 @@ function ActionsView(props: ActionsViewProps) {
         width: 400,
         minWidth: 400,
         wrapText: true,
+        filter: true,
       },
     ],
     []
