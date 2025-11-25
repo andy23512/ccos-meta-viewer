@@ -1,14 +1,20 @@
 import { Box } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import DeviceSelect from '../component/device-select';
 import MetaSelect from '../component/meta-select';
 import MetaView from '../component/meta-view';
 import VersionSelect from '../component/version-select';
 
 export function IndexPage() {
-  const [device, setDevice] = useState<string | null>(null);
-  const [version, setVersion] = useState<string | null>(null);
-  const [meta, setMeta] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [device, setDevice] = useState<string | null>(
+    searchParams.get('device')
+  );
+  const [version, setVersion] = useState<string | null>(
+    searchParams.get('version')
+  );
+  const [meta, setMeta] = useState<string | null>(searchParams.get('meta'));
 
   const handleDeviceSelectChange = (value: string | null) => {
     setDevice(value);
@@ -22,10 +28,26 @@ export function IndexPage() {
   const handleMetaSelectChange = (value: string | null) => {
     setMeta(value);
   };
+
+  useEffect(() => {
+    setSearchParams(() => {
+      const params = new URLSearchParams();
+      if (device) {
+        params.set('device', device);
+      }
+      if (version) {
+        params.set('version', version);
+      }
+      if (meta) {
+        params.set('meta', meta);
+      }
+      return params;
+    });
+  }, [device, version, meta]);
   return (
     <Box
       sx={{
-        p: 4,
+        p: 2,
         flex: '1 1 0',
         minHeight: 0,
         display: 'flex',
