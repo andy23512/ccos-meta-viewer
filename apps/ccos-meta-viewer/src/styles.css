@@ -13,6 +13,10 @@
 
 body {
   overflow: auto !important;
+
+  --ag-icon-button-active-color: rgba(3, 24, 58, 1);
+  --ag-icon-button-active-background-color: rgba(3, 24, 58, 0.2);
+  --ag-icon-button-active-indicator-color: rgba(3, 24, 58, 1);
 }
 
 #root {
