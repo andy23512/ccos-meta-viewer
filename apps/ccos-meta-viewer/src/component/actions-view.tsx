@@ -14,7 +14,8 @@ import {
   ActionTableRowData,
 } from '../model/action-table.model';
 import { KeymapCategory } from '../model/keymap.model';
-import categoryCellRenderer from './keymap-category-cell-renderer';
+import iconCellRenderer from './icon-cell-renderer';
+import keymapCategoryCellRenderer from './keymap-category-cell-renderer';
 
 interface ActionsViewProps {
   value: KeymapCategory[];
@@ -81,6 +82,7 @@ function ActionsView(props: ActionsViewProps) {
         field: 'icon',
         wrapText: true,
         filter: true,
+        cellRenderer: iconCellRenderer,
       },
       {
         field: 'display',
@@ -154,7 +156,7 @@ function ActionsView(props: ActionsViewProps) {
           rowData={tableData}
           columnDefs={colDefs}
           isFullWidthRow={isFullWidthRow}
-          fullWidthCellRenderer={categoryCellRenderer}
+          fullWidthCellRenderer={keymapCategoryCellRenderer}
           autoSizeStrategy={autoSizeStrategy}
           enableCellTextSelection={true}
           ensureDomOrder={true}
