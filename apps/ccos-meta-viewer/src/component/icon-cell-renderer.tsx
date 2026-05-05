@@ -3,9 +3,11 @@ import { ActionInfoRowData } from '../model/action-table.model';
 
 export default ({ node }: ICellRendererParams<ActionInfoRowData>) => {
   const data = node.data;
+
   return (
-    <div className="flex items-center h-[41px] text-lg pl-2">
-      <span className="material-icons">{data?.icon}</span>
+    <div className="flex items-center h-[41px] pl-2 gap-2">
+      <span className="material-icons text-lg">{data?.icon}</span>
+      {data?.icon}
     </div>
   );
 };
