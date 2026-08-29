@@ -3,8 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import JsonView from '@uiw/react-json-view';
 import { vscodeTheme } from '@uiw/react-json-view/vscode';
 import { getMetaFile } from '../api';
+import { Changelog } from '../model/changelog.model';
 import { KeymapCategory } from '../model/keymap.model';
 import ActionsView from './actions-view';
+import ChangelogView from './changelog-view';
 
 interface MetaViewProps {
   device: string | null;
@@ -35,6 +37,8 @@ function MetaView(props: MetaViewProps) {
       {metaFileQuery?.data &&
         (props.meta === 'actions.json' ? (
           <ActionsView value={metaFileQuery.data as KeymapCategory[]} />
+        ) : props.meta === 'changelog.json' ? (
+          <ChangelogView value={metaFileQuery.data as Changelog} />
         ) : (
           <JsonView
             className="h-full overflow-auto"
