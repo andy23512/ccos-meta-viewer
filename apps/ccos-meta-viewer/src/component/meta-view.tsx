@@ -5,8 +5,10 @@ import { vscodeTheme } from '@uiw/react-json-view/vscode';
 import { getMetaFile } from '../api';
 import { Changelog } from '../model/changelog.model';
 import { KeymapCategory } from '../model/keymap.model';
+import { Settings } from '../model/settings.model';
 import ActionsView from './actions-view';
 import ChangelogView from './changelog-view';
+import SettingsView from './settings-view';
 
 interface MetaViewProps {
   device: string | null;
@@ -39,6 +41,8 @@ function MetaView(props: MetaViewProps) {
           <ActionsView value={metaFileQuery.data as KeymapCategory[]} />
         ) : props.meta === 'changelog.json' ? (
           <ChangelogView value={metaFileQuery.data as Changelog} />
+        ) : props.meta === 'settings.json' ? (
+          <SettingsView value={metaFileQuery.data as Settings} />
         ) : (
           <JsonView
             className="h-full overflow-auto"

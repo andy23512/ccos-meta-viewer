@@ -10,28 +10,13 @@ import JsonView from '@uiw/react-json-view';
 import { vscodeTheme } from '@uiw/react-json-view/vscode';
 import { MouseEvent, useEffect, useState } from 'react';
 import { Changelog, ChangelogItem } from '../model/changelog.model';
+import { sanitizeInlineHtml } from '../util';
 
 interface ChangelogViewProps {
   value: Changelog;
 }
 
 type ChangelogViewType = 'list' | 'json';
-
-const ALLOWED_TAGS = ['i', 'b', 'code'];
-
-function sanitizeChangelogDescription(input: string): string {
-  const escaped = input
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-  return ALLOWED_TAGS.reduce(
-    (html, tag) =>
-      html
-        .replace(new RegExp(`&lt;${tag}&gt;`, 'g'), `<${tag}>`)
-        .replace(new RegExp(`&lt;/${tag}&gt;`, 'g'), `</${tag}>`),
-    escaped
-  );
-}
 
 function ChangelogSection(props: {
   title: string;
@@ -71,7 +56,7 @@ function ChangelogSection(props: {
                 color="text.secondary"
                 sx={{ pl: '20px', whiteSpace: 'pre-wrap' }}
                 dangerouslySetInnerHTML={{
-                  __html: sanitizeChangelogDescription(item.description),
+                  __html: sanitizeInlineHtml(item.description),
                 }}
               />
             )}
