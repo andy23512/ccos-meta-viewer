@@ -4,10 +4,12 @@ import JsonView from '@uiw/react-json-view';
 import { vscodeTheme } from '@uiw/react-json-view/vscode';
 import { getMetaFile } from '../api';
 import { Changelog } from '../model/changelog.model';
+import { ChordFile } from '../model/chord.model';
 import { KeymapCategory } from '../model/keymap.model';
 import { Settings } from '../model/settings.model';
 import ActionsView from './actions-view';
 import ChangelogView from './changelog-view';
+import ChordsView from './chords-view';
 import SettingsView from './settings-view';
 
 interface MetaViewProps {
@@ -43,6 +45,13 @@ function MetaView(props: MetaViewProps) {
           <ChangelogView value={metaFileQuery.data as Changelog} />
         ) : props.meta === 'settings.json' ? (
           <SettingsView value={metaFileQuery.data as Settings} />
+        ) : props.meta === 'starter_chords.json' ||
+          props.meta === 'functional_chords.json' ? (
+          <ChordsView
+            device={props.device as string}
+            version={props.version as string}
+            value={metaFileQuery.data as ChordFile}
+          />
         ) : (
           <JsonView
             className="h-full overflow-auto"
