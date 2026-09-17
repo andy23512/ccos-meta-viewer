@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import DeviceSelect from '../component/device-select';
@@ -15,6 +15,7 @@ export function IndexPage() {
     searchParams.get('version')
   );
   const [meta, setMeta] = useState<string | null>(searchParams.get('meta'));
+  const [showPreReleases, setShowPreReleases] = useState(false);
 
   const handleDeviceSelectChange = (value: string | null) => {
     setDevice(value);
@@ -55,7 +56,14 @@ export function IndexPage() {
         flexDirection: 'column',
       }}
     >
-      <Box sx={{ flex: '0 0 auto' }}>
+      <Box
+        sx={{
+          flex: '0 0 auto',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: 2,
+        }}
+      >
         <DeviceSelect
           value={device}
           onChange={handleDeviceSelectChange}
@@ -64,6 +72,7 @@ export function IndexPage() {
           device={device}
           value={version}
           onChange={handleVersionSelectChange}
+          showPreReleases={showPreReleases}
         ></VersionSelect>
         <MetaSelect
           device={device}
@@ -71,6 +80,15 @@ export function IndexPage() {
           value={meta}
           onChange={handleMetaSelectChange}
         ></MetaSelect>
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={showPreReleases}
+              onChange={(event) => setShowPreReleases(event.target.checked)}
+            />
+          }
+          label="Show pre-release versions"
+        />
       </Box>
       <MetaView device={device} version={version} meta={meta}></MetaView>
     </Box>

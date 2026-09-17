@@ -1,6 +1,7 @@
 import {
   CircularProgress,
   FormControl,
+  FormHelperText,
   InputLabel,
   MenuItem,
   OutlinedInput,
@@ -17,6 +18,7 @@ interface SharedSelectProps<T> {
   disabled: boolean;
   loading: boolean;
   error: boolean;
+  helperText?: string;
   children: ReactNode;
 }
 
@@ -43,6 +45,9 @@ function SharedSelect<T>(props: SharedSelectProps<T>) {
           props.children
         )}
       </Select>
+      {props.helperText && (
+        <FormHelperText>{props.helperText}</FormHelperText>
+      )}
     </FormControl>
   );
 }

@@ -7,6 +7,12 @@ interface VersionSelectProps {
   device: string | null;
   value: string | null;
   onChange: (version: string | null) => void;
+  showPreReleases: boolean;
+}
+
+// A pre-release version name always carries a `-` suffix (e.g. `2.1.0-rc.0`).
+function isPreRelease(version: string): boolean {
+  return version.includes('-');
 }
 
 function VersionSelect(props: VersionSelectProps) {
@@ -18,6 +24,14 @@ function VersionSelect(props: VersionSelectProps) {
   const handleChange = (value: string | null) => {
     props.onChange(value);
   };
+  const versions = (versionsQuery.data ?? []).filter(
+    (version) =>
+      props.showPreReleases ||
+      !isPreRelease(version.name) ||
+      version.name === props.value
+  );
+  const hasOnlyPreReleases =
+    !!versionsQuery.data && versionsQuery.data.length > 0 && versions.length === 0;
   return (
     <SharedSelect
       label="Version"
@@ -25,14 +39,22 @@ function VersionSelect(props: VersionSelectProps) {
       value={props.value}
       onChange={handleChange}
       disabled={
-        !props.device || versionsQuery.isLoading || versionsQuery.isError
+        !props.device ||
+        versionsQuery.isLoading ||
+        versionsQuery.isError ||
+        hasOnlyPreReleases
       }
       loading={versionsQuery.isLoading}
       error={versionsQuery.isError}
+      helperText={
+        hasOnlyPreReleases
+          ? 'No released versions — enable "Show pre-release versions"'
+          : undefined
+      }
     >
-      {versionsQuery.data?.map((device) => (
-        <MenuItem key={device.name} value={device.name}>
-          {device.name}
+      {versions.map((version) => (
+        <MenuItem key={version.name} value={version.name}>
+          {version.name}
         </MenuItem>
       ))}
     </SharedSelect>
