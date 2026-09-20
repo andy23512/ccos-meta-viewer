@@ -80,7 +80,7 @@ function ActionsView(props: ActionsViewProps) {
       },
       {
         field: 'icon',
-        wrapText: true,
+        minWidth: 280,
         filter: true,
         cellRenderer: iconCellRenderer,
       },
