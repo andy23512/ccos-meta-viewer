@@ -43,7 +43,9 @@ root.render(
   <StrictMode>
     <ThemeProvider theme={darkTheme}>
       <QueryClientProvider client={queryClient}>
-        <HashRouter>
+        <HashRouter
+          future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+        >
           <CssBaseline />
           <App />
         </HashRouter>

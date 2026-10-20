@@ -33,6 +33,9 @@ There are no root-level `test`/`lint`/`build` npm scripts; those targets come fr
 - `apps/ccos-meta-viewer/src/model.ts`, `src/model/` — TypeScript types for the Meta API response shape (devices, versions, keymaps, actions)
 - `apps/ccos-meta-viewer/src/component/` — presentational pieces (device/version/meta selects, ag-grid cell renderers, info dialog)
 - `apps/ccos-meta-viewer/src/page/` — routed pages: `index-page.tsx` (main viewer) and `swagger-page.tsx` (Swagger UI)
+- `apps/ccos-meta-viewer/src/page/swagger-spec.ts` — the OpenAPI document rendered by the Swagger page (schemas, endpoint descriptions, file examples). Edit this, not `swagger-page.tsx`, to change the API docs
+- `apps/ccos-meta-viewer/src/util.ts` — `convertDeviceVersionMetaToMetaItemList` builds the Meta select items (including Riley chords, Arpeggiates and Recipes, shown only when the build's `meta.json` lists them)
+- `apps/ccos-meta-viewer/src/chord.util.ts` — chord hashing, parent/child tree and TCCL conversion used by the chords table view
 - `apps/ccos-meta-viewer/src/swagger-dark/` — a third-party dark-theme CSS override for Swagger UI, not authored for this app
 - `apps/ccos-meta-viewer/dist/` — committed build output (not gitignored the way you might expect elsewhere — check before assuming it's disposable)
 - `apps/ccos-meta-viewer/src/tools/minify-icon-font.ts` — crawls every device/version's `actions.json` on the live Meta API plus a small static list (icons used directly in JSX, e.g. `changelog-view.tsx`) to find every Material Symbols icon name actually used, then subsets `material-symbols-rounded-latin-full-normal.woff2` down to just those glyphs. Run via `npm run minify-icon-font`.
