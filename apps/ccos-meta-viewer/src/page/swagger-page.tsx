@@ -243,6 +243,13 @@ export function SwaggerPage() {
       '/firmware/{device}/{version}/{file}': {
         get: {
           summary: 'Get firmware specific meta file',
+          description: [
+            'Get a file listed in the `files` field of `meta.json`. The available files depend on the device and version.',
+            '',
+            '- JSON files: `changelog.json`, `actions.json`, `settings.json`, `factory_settings.json`, `factory_layout.json`, `starter_chords.json`, `functional_chords.json`. Also `arpeggiates.json`, `recipes.json` and `riley_chords.json` in some builds.',
+            '- Firmware binaries: `firmware.bin`, `CURRENT.UF2`, and for esptool devices `tinyuf2.bin`, `bootloader-tinyuf2.bin`, `partitions.bin`, `boot_app0.bin`.',
+            '- zero_linux: `libccos.so`. zero_wasm: `ccos.js`, `ccos.wasm`. zero_win: `libccos.dll`.',
+          ].join('\n'),
           parameters: [
             {
               name: 'device',
@@ -265,7 +272,8 @@ export function SwaggerPage() {
           ],
           responses: {
             200: {
-              description: 'Content of the file',
+              description:
+                'Content of the file. JSON for `.json` files, binary for the others.',
             },
           },
         },
