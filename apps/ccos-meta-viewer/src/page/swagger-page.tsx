@@ -91,6 +91,18 @@ const updateSchema: OpenAPIV3_1.SchemaObject = {
   ],
 };
 
+const FILE_EXAMPLES = [
+  'actions.json',
+  'changelog.json',
+  'settings.json',
+  'factory_layout.json',
+  'factory_settings.json',
+  'starter_chords.json',
+  'functional_chords.json',
+  'arpeggiates.json',
+  'recipes.json',
+];
+
 export function SwaggerPage() {
   const spec: OpenAPIV3_1.Document = {
     openapi: '3.1.0',
@@ -249,6 +261,8 @@ export function SwaggerPage() {
             '- JSON files: `changelog.json`, `actions.json`, `settings.json`, `factory_settings.json`, `factory_layout.json`, `starter_chords.json`, `functional_chords.json`. Also `arpeggiates.json`, `recipes.json` and `riley_chords.json` in some builds.',
             '- Firmware binaries: `firmware.bin`, `CURRENT.UF2`, and for esptool devices `tinyuf2.bin`, `bootloader-tinyuf2.bin`, `partitions.bin`, `boot_app0.bin`.',
             '- zero_linux: `libccos.so`. zero_wasm: `ccos.js`, `ccos.wasm`. zero_win: `libccos.dll`.',
+            '',
+            'Note: `riley_chords.json` is large (about 350 KB). Swagger UI may fail to render its response in Try it out.',
           ].join('\n'),
           parameters: [
             {
@@ -268,6 +282,9 @@ export function SwaggerPage() {
               in: 'path',
               required: true,
               schema: { type: 'string' },
+              examples: Object.fromEntries(
+                FILE_EXAMPLES.map((file) => [file, { value: file }])
+              ),
             },
           ],
           responses: {
