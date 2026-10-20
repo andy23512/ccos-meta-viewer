@@ -17,7 +17,7 @@ export function sanitizeInlineHtml(input: string): string {
 }
 
 export function convertDeviceVersionMetaToMetaItemList(meta: Meta) {
-  return [
+  const items: { name: string; value: string | undefined }[] = [
     { name: 'Actions', value: meta.actions },
     { name: 'Changelog', value: meta.changelog },
     { name: 'Settings', value: meta.settings },
@@ -31,5 +31,13 @@ export function convertDeviceVersionMetaToMetaItemList(meta: Meta) {
       name: 'Factory Default Starter Chords',
       value: meta.factory_defaults.chords['starter'],
     },
+    {
+      name: 'Factory Default Riley Chords',
+      value: meta.factory_defaults.chords['riley'],
+    },
   ];
+  return items.filter((item) => item.value) as {
+    name: string;
+    value: string;
+  }[];
 }

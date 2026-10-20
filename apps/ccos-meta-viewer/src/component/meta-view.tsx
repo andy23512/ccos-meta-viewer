@@ -46,7 +46,8 @@ function MetaView(props: MetaViewProps) {
         ) : props.meta === 'settings.json' ? (
           <SettingsView value={metaFileQuery.data as Settings} />
         ) : props.meta === 'starter_chords.json' ||
-          props.meta === 'functional_chords.json' ? (
+          props.meta === 'functional_chords.json' ||
+          props.meta === 'riley_chords.json' ? (
           <ChordsView
             device={props.device as string}
             version={props.version as string}

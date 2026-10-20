@@ -121,6 +121,7 @@ export function SwaggerPage() {
                             properties: {
                               starter: { type: 'string' },
                               functional: { type: 'string' },
+                              riley: { type: 'string' },
                             },
                           },
                         },
