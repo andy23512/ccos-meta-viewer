@@ -35,6 +35,11 @@ export function convertDeviceVersionMetaToMetaItemList(meta: Meta) {
       name: 'Factory Default Riley Chords',
       value: meta.factory_defaults.chords['riley'],
     },
+    {
+      name: 'Factory Default Arpeggiates',
+      value: meta.factory_defaults.chords['arpeggiates'],
+    },
+    { name: 'Recipes', value: meta.recipes },
   ];
   return items.filter((item) => item.value) as {
     name: string;

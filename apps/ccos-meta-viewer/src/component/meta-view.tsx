@@ -50,7 +50,8 @@ function MetaView(props: MetaViewProps) {
           <SettingsView value={metaFileQuery.data as Settings} />
         ) : props.meta === 'starter_chords.json' ||
           props.meta === 'functional_chords.json' ||
-          props.meta === 'riley_chords.json' ? (
+          props.meta === 'riley_chords.json' ||
+          props.meta === 'arpeggiates.json' ? (
           <ChordsView
             device={props.device as string}
             version={props.version as string}
@@ -61,6 +62,7 @@ function MetaView(props: MetaViewProps) {
             className="h-full overflow-auto"
             value={metaFileQuery.data}
             style={vscodeTheme}
+            collapsed={props.meta === 'recipes.json' ? 1 : false}
           ></JsonView>
         ))}
     </Box>

@@ -22,6 +22,7 @@ export interface Meta {
   actions: string;
   settings: string;
   changelog: string;
+  recipes?: string;
   factory_defaults: {
     layout: string;
     settings: string;
