@@ -184,7 +184,7 @@ export function SwaggerPage() {
           ],
           responses: {
             200: {
-              description: 'A list of publicly available builds',
+              description: 'Meta of the firmware build',
               content: {
                 'application/json': {
                   schema: {
