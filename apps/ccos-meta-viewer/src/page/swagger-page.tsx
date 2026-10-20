@@ -42,12 +42,15 @@ const espToolSchema: OpenAPIV3_1.SchemaObject = {
     flash_size: { type: 'string' },
     files: {
       type: 'object',
-      properties: {
-        '0x410000': { type: 'string' },
-        '0x0000': { type: 'string' },
-        '0x8000': { type: 'string' },
-        '0xe000': { type: 'string' },
-        '0x10000': { type: 'string' },
+      description:
+        'Flash address to file name. The addresses differ between devices.',
+      additionalProperties: { type: 'string' },
+      example: {
+        '0x0000': 'bootloader-tinyuf2.bin',
+        '0x8000': 'partitions.bin',
+        '0xe000': 'boot_app0.bin',
+        '0x10000': 'firmware.bin',
+        '0x410000': 'tinyuf2.bin',
       },
     },
   },
