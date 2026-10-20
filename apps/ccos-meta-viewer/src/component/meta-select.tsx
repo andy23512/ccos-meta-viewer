@@ -43,6 +43,7 @@ function MetaSelect(props: MetaSelectProps) {
       }
       loading={metaQuery.isLoading}
       error={metaQuery.isError}
+      helperText={metaQuery.isError ? 'Failed to load meta.json' : undefined}
     >
       {metaQuery.data &&
         convertMetaToMetaItemList(metaQuery.data).map((metaItem) => (

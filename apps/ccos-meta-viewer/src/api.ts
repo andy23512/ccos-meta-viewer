@@ -1,13 +1,19 @@
 import { Device, Meta, Version } from './model';
 
-export async function getDevices(): Promise<Device[]> {
-  const response = await fetch('https://charachorder.io/firmware/');
+async function fetchJson<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status} ${response.statusText}: ${url}`);
+  }
   return await response.json();
 }
 
+export async function getDevices(): Promise<Device[]> {
+  return fetchJson('https://charachorder.io/firmware/');
+}
+
 export async function getVersions(device: string): Promise<Version[]> {
-  const response = await fetch(`https://charachorder.io/firmware/${device}/`);
-  return await response.json();
+  return fetchJson(`https://charachorder.io/firmware/${device}/`);
 }
 
 export async function getMeta(device: string, version: string): Promise<Meta> {
@@ -19,8 +25,7 @@ export async function getMetaFile(
   version: string,
   file: string
 ): Promise<Meta> {
-  const response = await fetch(
+  return fetchJson(
     `https://charachorder.io/firmware/${device}/${version}/${file}`
   );
-  return await response.json();
 }
