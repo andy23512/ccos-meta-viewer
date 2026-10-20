@@ -30,6 +30,64 @@ const spiFlashSchema: OpenAPIV3_1.SchemaObject = {
   },
 };
 
+const espToolSchema: OpenAPIV3_1.SchemaObject = {
+  type: 'object',
+  properties: {
+    chip: { type: 'string' },
+    baud: { type: 'string' },
+    before: { type: 'string' },
+    after: { type: 'string' },
+    flash_mode: { type: 'string' },
+    flash_freq: { type: 'string' },
+    flash_size: { type: 'string' },
+    files: {
+      type: 'object',
+      properties: {
+        '0x410000': { type: 'string' },
+        '0x0000': { type: 'string' },
+        '0x8000': { type: 'string' },
+        '0xe000': { type: 'string' },
+        '0x10000': { type: 'string' },
+      },
+    },
+  },
+};
+
+// The shape of `update` depends on the device
+const updateSchema: OpenAPIV3_1.SchemaObject = {
+  oneOf: [
+    {
+      title: 'ota / uf2 / esptool',
+      type: 'object',
+      properties: {
+        ota: { type: 'string' },
+        uf2: { type: 'string' },
+        esptool: {
+          ...espToolSchema,
+          type: ['object', 'null'],
+          description:
+            'null in some one_m0 builds. Missing in some lite_m0 and one_m0 builds.',
+        },
+      },
+    },
+    {
+      title: 'so (zero_linux)',
+      type: 'object',
+      properties: { so: { type: 'string' } },
+    },
+    {
+      title: 'js / wasm (zero_wasm)',
+      type: 'object',
+      properties: { js: { type: 'string' }, wasm: { type: 'string' } },
+    },
+    {
+      title: 'dll (zero_win)',
+      type: 'object',
+      properties: { dll: { type: 'string' } },
+    },
+  ],
+};
+
 export function SwaggerPage() {
   const spec: OpenAPIV3_1.Document = {
     openapi: '3.1.0',
@@ -152,35 +210,7 @@ export function SwaggerPage() {
                           },
                         },
                       },
-                      update: {
-                        type: 'object',
-                        properties: {
-                          ota: { type: 'string' },
-                          uf2: { type: 'string' },
-                          esptool: {
-                            type: 'object',
-                            properties: {
-                              chip: { type: 'string' },
-                              baud: { type: 'string' },
-                              before: { type: 'string' },
-                              after: { type: 'string' },
-                              flash_mode: { type: 'string' },
-                              flash_freq: { type: 'string' },
-                              flash_size: { type: 'string' },
-                              files: {
-                                type: 'object',
-                                properties: {
-                                  '0x410000': { type: 'string' },
-                                  '0x0000': { type: 'string' },
-                                  '0x8000': { type: 'string' },
-                                  '0xe000': { type: 'string' },
-                                  '0x10000': { type: 'string' },
-                                },
-                              },
-                            },
-                          },
-                        },
-                      },
+                      update: updateSchema as OpenAPIV3.SchemaObject,
                       actions: { type: 'string' },
                       settings: { type: 'string' },
                       changelog: { type: 'string' },
