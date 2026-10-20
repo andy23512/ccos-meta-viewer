@@ -32,6 +32,7 @@ function MetaSelect(props: MetaSelectProps) {
     <SharedSelect
       label="Meta"
       id="meta-select"
+      width={310}
       value={props.value}
       onChange={handleChange}
       disabled={

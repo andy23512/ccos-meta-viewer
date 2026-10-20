@@ -13,6 +13,7 @@ import { ReactNode } from 'react';
 interface SharedSelectProps<T> {
   label: string;
   id: string;
+  width: number;
   value: T;
   onChange: (value: T) => void;
   disabled: boolean;
@@ -27,7 +28,7 @@ function SharedSelect<T>(props: SharedSelectProps<T>) {
     props.onChange(event.target.value as T);
   };
   return (
-    <FormControl sx={{ width: 200 }} error={props.error}>
+    <FormControl sx={{ width: props.width }} error={props.error}>
       <InputLabel id={props.id + '-label'}>{props.label}</InputLabel>
       <Select
         input={<OutlinedInput label={props.label} />}

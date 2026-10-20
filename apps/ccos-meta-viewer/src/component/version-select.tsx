@@ -36,6 +36,7 @@ function VersionSelect(props: VersionSelectProps) {
     <SharedSelect
       label="Version"
       id="version-select"
+      width={170}
       value={props.value}
       onChange={handleChange}
       disabled={

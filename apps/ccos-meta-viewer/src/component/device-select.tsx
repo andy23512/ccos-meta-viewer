@@ -17,6 +17,7 @@ function DeviceSelect(props: DeviceSelectProps) {
     <SharedSelect
       label="Device"
       id="device-select"
+      width={140}
       value={props.value}
       onChange={handleChange}
       disabled={devicesQuery.isLoading || devicesQuery.isError}
