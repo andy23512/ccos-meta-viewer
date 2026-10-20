@@ -273,7 +273,7 @@ export function SwaggerPage() {
           responses: {
             200: {
               description:
-                'Content of the file. JSON for `.json` files, binary for the others.',
+                'Content of the file. JSON for `.json` files, JavaScript for `ccos.js`, binary for the others.',
             },
           },
         },
