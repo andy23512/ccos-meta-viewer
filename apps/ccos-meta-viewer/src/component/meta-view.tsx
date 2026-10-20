@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import JsonView from '@uiw/react-json-view';
 import { vscodeTheme } from '@uiw/react-json-view/vscode';
 import { getMetaFile } from '../api';
+import { Meta } from '../model';
 import { Changelog } from '../model/changelog.model';
 import { ChordFile } from '../model/chord.model';
 import { KeymapCategory } from '../model/keymap.model';
@@ -12,6 +13,8 @@ import ChangelogView from './changelog-view';
 import ChordsView from './chords-view';
 import SettingsView from './settings-view';
 
+type MetaFile = Meta | KeymapCategory[] | Changelog | Settings | ChordFile;
+
 interface MetaViewProps {
   device: string | null;
   version: string | null;
@@ -19,7 +22,7 @@ interface MetaViewProps {
 }
 
 function MetaView(props: MetaViewProps) {
-  const metaFileQuery = useQuery<any>({
+  const metaFileQuery = useQuery<MetaFile>({
     queryKey: [
       'devices',
       props.device,
