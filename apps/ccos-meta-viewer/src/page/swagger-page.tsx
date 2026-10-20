@@ -1,8 +1,34 @@
-import { OpenAPIV3_1 } from 'openapi-types';
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import SwaggerUI from 'swagger-ui-react';
 
 import 'swagger-ui-react/swagger-ui.css';
 import '../swagger-dark/SwaggerDark.css';
+
+const spiConnectionSchema: OpenAPIV3_1.SchemaObject = {
+  type: 'object',
+  properties: {
+    clk: { type: 'number' },
+    q: { type: 'number' },
+    d: { type: 'number' },
+    hd: { type: 'number' },
+    cs: { type: 'number' },
+  },
+};
+
+const spiFlashSchema: OpenAPIV3_1.SchemaObject = {
+  type: ['object', 'null'],
+  description: 'Only present in some devices. null in some builds.',
+  properties: {
+    type: { type: 'string' },
+    size: { type: 'string' },
+    connection: spiConnectionSchema,
+    spi_connection: {
+      ...spiConnectionSchema,
+      description:
+        'Same shape as connection. Some devices use this name instead.',
+    },
+  },
+};
 
 export function SwaggerPage() {
   const spec: OpenAPIV3_1.Document = {
@@ -163,23 +189,9 @@ export function SwaggerPage() {
                         description: 'Only present in some builds.',
                       },
                       files: { type: 'array', items: { type: 'string' } },
-                      spi_flash: {
-                        type: 'object',
-                        properties: {
-                          type: { type: 'string' },
-                          size: { type: 'string' },
-                          spi_connection: {
-                            type: 'object',
-                            properties: {
-                              clk: { type: 'number' },
-                              q: { type: 'number' },
-                              d: { type: 'number' },
-                              hd: { type: 'number' },
-                              cs: { type: 'number' },
-                            },
-                          },
-                        },
-                      },
+                      // `properties` is typed with the OpenAPI 3.0 schema in
+                      // openapi-types, which has no 'null' type
+                      spi_flash: spiFlashSchema as OpenAPIV3.SchemaObject,
                     },
                   },
                 },
