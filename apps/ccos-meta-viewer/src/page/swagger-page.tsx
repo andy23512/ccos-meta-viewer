@@ -158,6 +158,10 @@ export function SwaggerPage() {
                       actions: { type: 'string' },
                       settings: { type: 'string' },
                       changelog: { type: 'string' },
+                      recipes: {
+                        type: 'string',
+                        description: 'Only present in some builds.',
+                      },
                       files: { type: 'array', items: { type: 'string' } },
                       spi_flash: {
                         type: 'object',
