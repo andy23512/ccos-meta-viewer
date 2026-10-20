@@ -130,12 +130,7 @@ export function SwaggerPage() {
                   schema: {
                     type: 'array',
                     items: {
-                      type: 'object',
-                      properties: {
-                        name: { type: 'string' },
-                        type: { type: 'string' },
-                        mtime: { type: 'string' },
-                      },
+                      $ref: '#/components/schemas/DirectoryEntry',
                     },
                   },
                 },
@@ -163,12 +158,7 @@ export function SwaggerPage() {
                   schema: {
                     type: 'array',
                     items: {
-                      type: 'object',
-                      properties: {
-                        name: { type: 'string' },
-                        type: { type: 'string' },
-                        mtime: { type: 'string' },
-                      },
+                      $ref: '#/components/schemas/DirectoryEntry',
                     },
                   },
                 },
@@ -292,6 +282,19 @@ export function SwaggerPage() {
               description:
                 'Content of the file. JSON for `.json` files, JavaScript for `ccos.js`, binary for the others.',
             },
+          },
+        },
+      },
+    },
+    components: {
+      schemas: {
+        DirectoryEntry: {
+          type: 'object',
+          description: 'An entry of a directory listing.',
+          properties: {
+            name: { type: 'string' },
+            type: { type: 'string', description: 'e.g. directory' },
+            mtime: { type: 'string' },
           },
         },
       },
