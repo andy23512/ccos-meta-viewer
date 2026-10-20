@@ -104,13 +104,16 @@ export const swaggerSpec: OpenAPIV3_1.Document = {
   info: {
     title: 'CCOS firmware meta API',
     version: '1.0.0',
-    description:
+    description: [
       'Firmware Meta API is an important part for developing tooling that interacts with CCOS and used by https://charachorder.io/.',
+      '',
+      'There is no test server. Try it out sends read-only GET requests from your browser directly to the production server. The server allows cross-origin requests, so this works from any page.',
+    ].join('\n'),
   },
   servers: [
     {
       url: 'https://charachorder.io',
-      description: 'charachorder.io server',
+      description: 'Production server',
     },
   ],
   paths: {
