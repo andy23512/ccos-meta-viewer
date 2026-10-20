@@ -147,6 +147,7 @@ function ChordsView(props: ChordsViewProps) {
           className="h-full overflow-auto"
           value={props.value}
           style={vscodeTheme}
+          collapsed={1}
         ></JsonView>
       )}
       <ToggleButtonGroup
