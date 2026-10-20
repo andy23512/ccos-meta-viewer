@@ -208,7 +208,14 @@ export function SwaggerPage() {
                             properties: {
                               starter: { type: 'string' },
                               functional: { type: 'string' },
-                              riley: { type: 'string' },
+                              riley: {
+                                type: 'string',
+                                description: 'Only present in some builds.',
+                              },
+                              arpeggiates: {
+                                type: 'string',
+                                description: 'Only present in some builds.',
+                              },
                             },
                           },
                         },
