@@ -1,28 +1,30 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './app';
 
-describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(
+function renderApp() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
+  return render(
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    );
+    </QueryClientProvider>
+  );
+}
+
+describe('App', () => {
+  it('should render successfully', () => {
+    const { baseElement } = renderApp();
     expect(baseElement).toBeTruthy();
   });
 
-  it('should have a greeting as the title', () => {
-    const { getAllByText } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    );
-    expect(
-      getAllByText(
-        new RegExp('Welcome @ccos-meta-viewer/ccos-meta-viewer', 'gi')
-      ).length > 0
-    ).toBeTruthy();
+  it('should have the app name as the title', () => {
+    const { getAllByText } = renderApp();
+    expect(getAllByText('CCOS Meta Viewer').length > 0).toBeTruthy();
   });
 });
