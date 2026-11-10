@@ -17,7 +17,7 @@ CCOS Meta Viewer is an unofficial web GUI for browsing data from the official Ch
 
 Run from repo root; Nx resolves the single project automatically.
 
-- Install: `npm install` (or `yarn install`) — lockfiles for both exist, CI uses `npm install`
+- Install: `npm install` — the lockfile is `package-lock.json`, CI uses `npm install`
 - Dev server: `npm start` (runs `nx serve ccos-meta-viewer --port 4301`; underlying Vite default port is 4200)
 - Build: `npx nx build ccos-meta-viewer` (prod build used by deploy: `npx nx build ccos-meta-viewer --prod`)
 - Test: `npx nx test ccos-meta-viewer` (Vitest, jsdom environment)
