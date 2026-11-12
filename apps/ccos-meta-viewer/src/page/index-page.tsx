@@ -1,5 +1,5 @@
 import { Box, Checkbox, FormControlLabel } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import DeviceSelect from '../component/device-select';
 import MetaSelect from '../component/meta-select';
@@ -8,43 +8,41 @@ import VersionSelect from '../component/version-select';
 
 export function IndexPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [device, setDevice] = useState<string | null>(
-    searchParams.get('device')
-  );
-  const [version, setVersion] = useState<string | null>(
-    searchParams.get('version')
-  );
-  const [meta, setMeta] = useState<string | null>(searchParams.get('meta'));
+  // 網址是 device / version / meta 的唯一資料來源，
+  // 這樣貼上新網址或按上一頁／下一頁時，畫面才會跟著網址走。
+  const device = searchParams.get('device');
+  const version = searchParams.get('version');
+  const meta = searchParams.get('meta');
   const [showPreReleases, setShowPreReleases] = useState(false);
 
-  const handleDeviceSelectChange = (value: string | null) => {
-    setDevice(value);
-    setVersion(null);
-    setMeta(null);
-  };
-  const handleVersionSelectChange = (value: string | null) => {
-    setVersion(value);
-    setMeta(null);
-  };
-  const handleMetaSelectChange = (value: string | null) => {
-    setMeta(value);
+  const updateParams = (
+    nextDevice: string | null,
+    nextVersion: string | null,
+    nextMeta: string | null
+  ) => {
+    const params = new URLSearchParams();
+    if (nextDevice) {
+      params.set('device', nextDevice);
+    }
+    if (nextVersion) {
+      params.set('version', nextVersion);
+    }
+    if (nextMeta) {
+      params.set('meta', nextMeta);
+    }
+    setSearchParams(params);
   };
 
-  useEffect(() => {
-    setSearchParams(() => {
-      const params = new URLSearchParams();
-      if (device) {
-        params.set('device', device);
-      }
-      if (version) {
-        params.set('version', version);
-      }
-      if (meta) {
-        params.set('meta', meta);
-      }
-      return params;
-    });
-  }, [device, version, meta, setSearchParams]);
+  const handleDeviceSelectChange = (value: string | null) => {
+    updateParams(value, null, null);
+  };
+  const handleVersionSelectChange = (value: string | null) => {
+    updateParams(device, value, null);
+  };
+  const handleMetaSelectChange = (value: string | null) => {
+    updateParams(device, version, value);
+  };
+
   return (
     <Box
       sx={{
