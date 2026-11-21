@@ -1,5 +1,7 @@
 # CCOS Meta Viewer
 
+[![CI](https://github.com/andy23512/ccos-meta-viewer/actions/workflows/ci.yml/badge.svg)](https://github.com/andy23512/ccos-meta-viewer/actions/workflows/ci.yml)
+
 This website serves as an unofficial data viewer for the official [CharaChorder Firmware Meta API](https://github.com/CharaChorder/CCOS-firmware?tab=readme-ov-file#firmware-meta-api). It enables developers to more easily access specific types of data for a particular device and firmware version through a graphical user interface (GUI). It also includes a [Swagger UI](https://swagger.io/tools/swagger-ui/).
 
 ## Disclaimer
