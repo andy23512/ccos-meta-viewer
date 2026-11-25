@@ -75,5 +75,34 @@
   },
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "overrides": {
+    "nx": {
+      "minimatch": "^11.0.1"
+    },
+    "@nx/devkit": {
+      "minimatch": "^11.0.1"
+    },
+    "@nx/react": {
+      "minimatch": "^11.0.1"
+    },
+    "@swagger-api/apidom-reference": {
+      "minimatch": "^11.0.1"
+    },
+    "@swc/cli": {
+      "minimatch": "^11.0.1"
+    },
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.1"
+    },
+    "eslint": {
+      "minimatch": "^3.1.2"
+    },
+    "@eslint/config-array": {
+      "minimatch": "^3.1.2"
+    },
+    "@eslint/eslintrc": {
+      "minimatch": "^3.1.2"
+    }
+  }
 }
